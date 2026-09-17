@@ -31,6 +31,12 @@
       box-shadow: var(--shadow-card);
       border-top: 4px solid var(--rose);
     }
+    .contact-card-alt {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-card);
+    }
 
     /* Formulaire */
     .form-group { margin-bottom: 1.5rem; position: relative; }
@@ -94,9 +100,16 @@
       flex-shrink: 0;
       color: var(--rose-deep);
     }
+    .ci-content { min-width: 0; flex: 1; overflow: hidden; }
     .ci-content h3 { font-size: 1.1rem; font-family: var(--font-sans); margin-bottom: 0.5rem; color: var(--dark); }
     .ci-content p, .ci-content a { color: var(--taupe); line-height: 1.6; }
+    .ci-content a { word-break: break-all; }
     .ci-content a:hover { color: var(--rose-deep); text-decoration: underline; }
+
+    /* Horaires table */
+    .horaires-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .horaires-table td { padding: 0.25rem 0.5rem 0.25rem 0; vertical-align: top; font-size: 0.88rem; }
+    .horaires-table td:first-child { width: 38%; white-space: nowrap; }
 
     /* Map */
     .map-container {
@@ -111,8 +124,11 @@
     .map-container iframe { width: 100%; height: 100%; border: 0; }
 
     @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
       .contact-hero { padding: 8rem 0 2rem; }
+      .contact-card, .contact-card-alt { padding: 1.5rem; }
+      .map-container { height: 260px; margin-top: 2rem; }
+      .ci-icon { width: 40px; height: 40px; font-size: 1rem; }
     }
   </style>
 </head>
@@ -224,7 +240,7 @@
 
       <!-- COORDONNÉES -->
       <div class="reveal delay-2">
-        <div style="background: var(--white); border-radius: var(--radius-xl); padding: 3rem; box-shadow: var(--shadow-card);">
+        <div class="contact-card-alt">
           <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--dark); margin-bottom: 2rem;">Nos Coordonnées</h2>
           
           <div class="contact-info-item">
