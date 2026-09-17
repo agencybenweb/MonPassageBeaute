@@ -355,6 +355,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 300; line-height: 
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  padding-top: 3rem;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;

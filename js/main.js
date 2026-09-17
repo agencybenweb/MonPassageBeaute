@@ -62,9 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNav.style.display = 'flex';
         setTimeout(() => mobileNav.classList.add('open'), 10);
         body.style.overflow = 'hidden';
+        if (header) {
+          header.classList.remove('transparent');
+          header.classList.add('scrolled', 'nav-open');
+        }
       } else {
         mobileNav.classList.remove('open');
         body.style.overflow = '';
+        if (header) {
+          header.classList.remove('nav-open');
+          handleScroll();
+        }
         setTimeout(() => {
           if (!mobileNav.classList.contains('open')) {
             mobileNav.style.display = 'none';
@@ -79,6 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.remove('active');
         mobileNav.classList.remove('open');
         body.style.overflow = '';
+        if (header) {
+          header.classList.remove('nav-open');
+          handleScroll();
+        }
         setTimeout(() => { mobileNav.style.display = 'none'; }, 400);
       });
     });
