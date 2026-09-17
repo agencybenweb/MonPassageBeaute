@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestations — Mon Passage Beauté · Institut de beauté à Roanne</title>
+  <meta name="description" content="Découvrez toutes les prestations de l'institut Mon Passage Beauté à Roanne. Épilations, soins du visage bio, modelages relaxants, beauté des mains et des pieds, maquillage et beauté du regard.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* Styling spécifique à la page prestations */
+    .prestation-hub-nav {
+      position: sticky;
+      top: 80px; /* en dessous du header */
+      background: rgba(253, 248, 244, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 90;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none; /* Firefox */
+    }
+    .prestation-hub-nav::-webkit-scrollbar { display: none; }
+    .hub-nav-list {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+    }
+    .hub-nav-link {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--taupe);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: var(--transition);
+      background: var(--white);
+      border: 1px solid var(--rose-light);
+    }
+    .hub-nav-link:hover, .hub-nav-link.active {
+      background: var(--rose-deep);
+      color: var(--white);
+      border-color: var(--rose-deep);
+    }
+
+    .prestation-block {
+      padding: 6rem 0;
+      border-bottom: 1px dashed var(--cream-dark);
+    }
+    .prestation-block:nth-child(even) { background: var(--white); }
+    .prestation-block:nth-child(odd) { background: var(--cream); }
+
+    .block-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .block-img-wrapper { position: relative; }
+    .block-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
+    .block-icon {
+      position: absolute;
+      bottom: -1.5rem; right: -1.5rem;
+      width: 80px; height: 80px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: var(--shadow-hover);
+      border: 4px solid var(--cream);
+    }
+
+    .block-content h2 { font-family: var(--font-script); font-size: 3.5rem; color: var(--rose-deep); margin-bottom: 1rem; line-height: 1.1; }
+    .block-content p { color: var(--taupe); line-height: 1.8; margin-bottom: 2rem; font-size: 1.05rem; }
+
+    .feature-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .feature-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .feature-item::before { content: '✦'; color: var(--gold); }
+    
+    .prestation-note {
+      background: var(--rose-light);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--rose-deep);
+    }
+
+    @media (max-width: 768px) {
+      .block-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .block-img-wrapper { order: -1; }
+      .hub-nav-list { justify-content: flex-start; padding-bottom: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header scrolled" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="52" height="52">
+      <div class="logo-text">
+        <span class="logo-name">Mon Passage Beauté</span>
+        <span class="logo-tagline">Institut · Roanne</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-dropdown">
+        <a href="prestations.html" class="nav-link active">Prestations ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="#epilation">💫 Épilation</a>
+          <a href="#soins-visage">✨ Soins du visage</a>
+          <a href="#modelages">🌿 Modelages & Corps</a>
+          <a href="#manucure">💅 Manucure & Pieds</a>
+          <a href="#maquillage">💋 Maquillage</a>
+          <a href="#regard">👁️ Beauté du regard</a>
+        </div>
+      </div>
+      <a href="head-spa.html" class="nav-link">Holistic Head Spa</a>
+      <a href="enfants.html" class="nav-link">Enfants & Anniversaires</a>
+      <a href="galerie.html" class="nav-link">Galerie</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-cta-wrap">
+      <a href="contact.html#rdv" class="btn btn-primary nav-cta" id="header-rdv-btn">🌸 Prendre rendez-vous</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="prestations.html">Prestations</a>
+  <a href="head-spa.html">Holistic Head Spa</a>
+  <a href="enfants.html">Enfants & Anniversaires</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="tarifs.html">Tarifs</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html#rdv" class="btn btn-primary mt-3">🌸 Prendre rendez-vous</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('assets/facade.jpg'); background-position: center 30%;"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Votre beauté sur mesure</span>
+    <h1 class="page-hero-title">Nos Prestations</h1>
+    <p class="page-hero-subtitle">Une large gamme de soins pour révéler votre beauté et vous offrir un moment de pure détente.</p>
+  </div>
+</div>
+
+<!-- HUB NAVIGATION (Sticky) -->
+<nav class="prestation-hub-nav">
+  <div class="hub-nav-list">
+    <a href="#epilation" class="hub-nav-link">💫 Épilation</a>
+    <a href="#soins-visage" class="hub-nav-link">✨ Visage</a>
+    <a href="#modelages" class="hub-nav-link">🌿 Corps & Modelages</a>
+    <a href="#manucure" class="hub-nav-link">💅 Manucure & Pieds</a>
+    <a href="#regard" class="hub-nav-link">👁️ Regard</a>
+    <a href="#maquillage" class="hub-nav-link">💋 Maquillage</a>
+    <a href="head-spa.html" class="hub-nav-link" style="background: rgba(201,169,110,0.15); border-color: rgba(201,169,110,0.4); color: var(--gold-dark);">✦ Head Spa</a>
+  </div>
+</nav>
+
+<!-- SECTION: ÉPILATION -->
+<section class="prestation-block" id="epilation">
+  <div class="container">
+    <div class="block-grid">
+      <div class="block-content reveal-left">
+        <span class="section-label">Douceur & Précision</span>
+        <h2>Épilation</h2>
+        <div class="section-divider"></div>
+        <p>Nous vous proposons des prestations d'épilation réalisées avec douceur et professionnalisme. Que ce soit à la cire classique pour le corps, ou au fil pour une précision absolue sur le visage, nous veillons à votre confort.</p>
+        
+        <div class="feature-list">
+          <div class="feature-item"><strong>Épilation à la cire</strong> : Jambes, maillot, aisselles, bras, dos, torse. Une méthode efficace pour une peau douce durablement.</div>
+          <div class="feature-item"><strong>Épilation au fil</strong> : Technique ancestrale idéale pour le visage (sourcils, lèvres, menton, joues). Ultra-précise, douce pour la peau, et parfaite pour redessiner la ligne des sourcils.</div>
+          <div class="feature-item"><strong>Forfaits</strong> : Profitez de nos forfaits combinés (Aisselles + Jambes + Maillot) ou forfaits visage au fil pour un tarif avantageux.</div>
+        </div>
+
+        <div class="prestation-note">
+          🎓 <strong>Avantage Étudiants :</strong> Bénéficiez de 15% de remise sur toutes vos prestations d'épilation (sur présentation d'un justificatif).
+        </div>
+
+        <div class="flex gap-1 flex-wrap">
+          <a href="tarifs.html" class="btn btn-secondary">Voir les tarifs épilation</a>
+          <a href="contact.html#rdv" class="btn btn-primary">Prendre RDV</a>
+        </div>
+      </div>
+      <div class="block-img-wrapper reveal-right">
+        <!-- Placeholder pour photo epilation -->
+        <div class="block-img" style="background: linear-gradient(135deg, #f5ede4, #fce8e8); display: flex; align-items: center; justify-content: center; color: var(--rose); font-size: 4rem;">💫</div>
+        <div class="block-icon">✨</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: SOINS VISAGE -->
+<section class="prestation-block" id="soins-visage">
+  <div class="container">
+    <div class="block-grid">
+      <div class="block-img-wrapper reveal-left">
+        <!-- Placeholder pour photo visage -->
+        <div class="block-img" style="background: linear-gradient(135deg, #e8f0e4, #f5ede4); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 4rem;">💆‍♀️</div>
+        <div class="block-icon">🌿</div>
+      </div>
+      <div class="block-content reveal-right">
+        <span class="section-label">Bio by Oxalia</span>
+        <h2>Soins du Visage</h2>
+        <div class="section-divider"></div>
+        <p>Accordez à votre peau l'attention qu'elle mérite avec nos soins du visage réalisés exclusivement avec les produits <strong>Bio by Oxalia</strong>. Des formules naturelles, biologiques et respectueuses, adaptées à chaque type de peau.</p>
+        
+        <div class="feature-list">
+          <div class="feature-item"><strong>Coup d'éclat (30 min)</strong> : L'essentiel pour réveiller le teint et hydrater la peau en un temps record.</div>
+          <div class="feature-item"><strong>Éclat nettoyant (45 min)</strong> : Un soin purifiant en profondeur, idéal pour retrouver une peau nette et fraîche.</div>
+          <div class="feature-item"><strong>Éclat divin (60 min) & Précieux (75 min)</strong> : Des protocoles complets alliant nettoyage, gommage, modelage relaxant et masque traitant.</div>
+          <div class="feature-item"><strong>NOUVEAU : Anti-rides Madero visage (90 min)</strong> : Soin anti-âge d'exception utilisant la madérothérapie pour lisser, raffermir et sculpter les traits du visage.</div>
+        </div>
+
+        <div class="flex gap-1 flex-wrap">
+          <a href="tarifs.html" class="btn btn-secondary">Voir les tarifs visage</a>
+          <a href="contact.html#rdv" class="btn btn-primary">Prendre RDV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: MODELAGES & CORPS -->
+<section class="prestation-block" id="modelages">
+  <div class="container">
+    <div class="block-grid">
+      <div class="block-content reveal-left">
+        <span class="section-label">Détente absolue</span>
+        <h2>Modelages & Corps</h2>
+        <div class="section-divider"></div>
+        <p>Évadez-vous du quotidien grâce à nos modelages et soins corporels. De la courte parenthèse relaxante aux escapades lointaines, chaque soin est une invitation au voyage intérieur.</p>
+        
+        <div class="feature-list">
+          <div class="feature-item"><strong>Les Parenthèses (30 min)</strong> : Visage, corps ou dos. Des modelages ciblés pour relâcher les tensions rapidement.</div>
+          <div class="feature-item"><strong>Les Escapades (60 min)</strong> : Balinaise, Polynésienne, Scandinave ou Orientale. Choisissez l'univers olfactif et la technique qui vous correspondent pour un voyage sensoriel total.</div>
+          <div class="feature-item"><strong>La Douce Escapade & Douce Envolée (1h)</strong> : Nos rituels complets combinant gommage et modelage pour une peau sublimée et un esprit apaisé.</div>
+        </div>
+
+        <div class="prestation-note" style="background: rgba(201,169,110,0.1); border-color: var(--gold);">
+          ⚠️ <strong>Note :</strong> La durée indiquée pour nos soins corporels comprend le temps de déshabillage et d'habillage.
+        </div>
+
+        <div class="flex gap-1 flex-wrap">
+          <a href="tarifs.html" class="btn btn-secondary">Voir les tarifs corps</a>
+          <a href="contact.html#rdv" class="btn btn-primary">Prendre RDV</a>
+        </div>
+      </div>
+      <div class="block-img-wrapper reveal-right">
+        <!-- Placeholder pour photo corps -->
+        <div class="block-img" style="background: linear-gradient(135deg, #fce8f4, #e8e4f4); display: flex; align-items: center; justify-content: center; color: var(--rose-deep); font-size: 4rem;">🧘‍♀️</div>
+        <div class="block-icon">🕊️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: MANUCURE -->
+<section class="prestation-block" id="manucure">
+  <div class="container">
+    <div class="block-grid">
+      <div class="block-img-wrapper reveal-left">
+        <!-- Placeholder pour photo manucure -->
+        <div class="block-img" style="background: linear-gradient(135deg, #f5ede4, #fce8e8); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 4rem;">💅</div>
+        <div class="block-icon">✨</div>
+      </div>
+      <div class="block-content reveal-right">
+        <span class="section-label">Jusqu'au bout des ongles</span>
+        <h2>Manucure & Pieds</h2>
+        <div class="section-divider"></div>
+        <p>Prenez soin de vos mains et de vos pieds avec nos soins spécifiques. Nous veillons à l'hydratation, la beauté et la santé de vos ongles et de votre peau.</p>
+        
+        <div class="feature-list">
+          <div class="feature-item"><strong>Soins des mains et pieds</strong> : Des protocoles complets pour nourrir, adoucir la peau et embellir les ongles.</div>
+          <div class="feature-item"><strong>Calluspeeling</strong> : Le traitement professionnel révolutionnaire pour la beauté des pieds. Il élimine les callosités en douceur, sans lame ni fraise, pour retrouver des pieds lisses et doux.</div>
+          <div class="feature-item"><strong>Pose de vernis classique</strong> : La touche finale parfaite après votre soin.</div>
+        </div>
+
+        <div class="flex gap-1 flex-wrap mt-4">
+          <a href="tarifs.html" class="btn btn-secondary">Voir les tarifs ongles</a>
+          <a href="contact.html#rdv" class="btn btn-primary">Prendre RDV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: BEAUTÉ DU REGARD & MAQUILLAGE -->
+<section class="prestation-block" id="regard">
+  <div class="container">
+    <div class="block-grid">
+      <div class="block-content reveal-left">
+        <span class="section-label">Mise en beauté</span>
+        <h2>Regard & Maquillage</h2>
+        <div class="section-divider"></div>
+        <p>Soulignez vos traits et intensifiez votre regard. De la teinture naturelle au réhaussement spectaculaire, jusqu'au maquillage pour le plus beau jour de votre vie.</p>
+        
+        <div class="feature-list" id="maquillage">
+          <div class="feature-item"><strong>Beauté du Regard</strong> : Teinture de cils et sourcils pour plus de profondeur, ou Réhausseur de cils pour une courbure naturelle et durable sans extension.</div>
+          <div class="feature-item"><strong>Maquillage Jour / Soir</strong> : Une mise en beauté adaptée à votre événement, lumineuse et élégante.</div>
+          <div class="feature-item"><strong>Maquillage Mariée</strong> : Un accompagnement sur-mesure pour votre mariage, incluant un essai offert pour garantir le résultat parfait le jour J.</div>
+          <div class="feature-item"><strong>Sublimation Bronzante</strong> : Visage et décolleté pour un effet bonne mine instantané.</div>
+        </div>
+
+        <div class="flex gap-1 flex-wrap mt-4">
+          <a href="tarifs.html" class="btn btn-secondary">Voir les tarifs beauté</a>
+          <a href="contact.html#rdv" class="btn btn-primary">Prendre RDV</a>
+        </div>
+      </div>
+      <div class="block-img-wrapper reveal-right">
+        <!-- Placeholder pour photo regard -->
+        <div class="block-img" style="background: linear-gradient(135deg, #e8f0e4, #e8e4f4); display: flex; align-items: center; justify-content: center; color: var(--taupe); font-size: 4rem;">👁️</div>
+        <div class="block-icon">💋</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION (Expériences Spéciales) -->
+<section class="section" style="background: var(--dark); color: var(--white); text-align: center;">
+  <div class="container">
+    <h2 style="font-family: var(--font-script); font-size: 3.5rem; color: var(--gold-light); margin-bottom: 1rem;">Découvrez aussi...</h2>
+    <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 3rem;">
+      Nos expériences signatures et nos rituels dédiés pour un moment d'exception hors du temps.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.3); border-radius: var(--radius-lg); padding: 3rem 2rem;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--gold-light);">✦</div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; color: var(--cream);">Holistic Head Spa</h3>
+        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem;">Notre soin d'exception alliant soin du visage, gommage et massage du cuir chevelu sous cascade d'eau.</p>
+        <a href="head-spa.html" class="btn btn-gold" style="width:100%; justify-content:center;">Découvrir l'expérience</a>
+      </div>
+      
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(201,123,138,0.3); border-radius: var(--radius-lg); padding: 3rem 2rem;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌸</div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; color: var(--cream);">Soins Enfants</h3>
+        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem;">Des rituels magiques pour les petites princesses, soins mère/fille et formules anniversaires.</p>
+        <a href="enfants.html" class="btn btn-primary" style="width:100%; justify-content:center;">Voir les rituels enfants</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="48" height="48">
+          <span class="footer-brand-name">Mon Passage Beauté</span>
+        </div>
+        <p class="footer-brand-desc">Institut de beauté & bien-être · 8 Passage Matel, 42300 Roanne.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📘</a>
+          <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📷</a>
+          <a href="tel:0613422155" class="footer-social">📞</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Prestations</h4>
+        <ul class="footer-links">
+          <li><a href="#epilation">Épilation</a></li>
+          <li><a href="#soins-visage">Soins du visage</a></li>
+          <li><a href="#modelages">Modelages & Corps</a></li>
+          <li><a href="#manucure">Manucure & Pieds</a></li>
+          <li><a href="#regard">Beauté du regard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institut</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="head-spa.html">Holistic Head Spa</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html#rdv">Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0613422155">06 13 42 21 55</a></li>
+          <li><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></li>
+          <li><span style="color: rgba(255,255,255,0.35);">8 Passage Matel, 42300 Roanne</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mon Passage Beauté — Institut · Roanne</p>
+      <p><a href="#" style="color: rgba(255,255,255,0.35);">Mentions légales</a> · <a href="#" style="color: rgba(255,255,255,0.35);">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top">↑</button>
+<div class="floating-cta">
+  <a href="contact.html#rdv" class="btn btn-primary">🌸 Réserver</a>
+</div>
+
+<script src="js/main.js?v=2"></script>
+<script>
+  // Simple scroll spy for local nav
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.prestation-block');
+    const navLinks = document.querySelectorAll('.hub-nav-link');
+    const navContainer = document.querySelector('.prestation-hub-nav');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 150)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+          // Scroll the nav horizontally without interrupting window vertical scroll
+          if (navContainer) {
+            const linkRect = link.getBoundingClientRect();
+            const containerRect = navContainer.getBoundingClientRect();
+            const offset = linkRect.left - containerRect.left - (containerRect.width / 2) + (linkRect.width / 2);
+            navContainer.scrollBy({ left: offset, behavior: 'smooth' });
+          }
+        }
+      });
+    }, { passive: true });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+

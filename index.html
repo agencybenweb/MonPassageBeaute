@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Passage Beauté — Institut de beauté à Roanne</title>
+  <meta name="description" content="Mon Passage Beauté, votre institut de beauté à Roanne. Épilations, soins du visage, Holistic Head Spa, modelages, soins enfants et anniversaires. 8 Passage Matel, 42300 Roanne.">
+  <meta name="keywords" content="institut de beauté Roanne, esthéticienne Roanne, soins visage Roanne, épilation Roanne, Head Spa Roanne, massage modelage Roanne, beauté du regard Roanne">
+  <link rel="canonical" href="https://monpassagebeaute.fr/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mon Passage Beauté — Institut de beauté à Roanne">
+  <meta property="og:description" content="Votre espace beauté & bien-être au cœur de Roanne. Épilations, soins, Head Spa, enfants et anniversaires.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* Page-specific styles */
+    .hero { background: var(--dark); }
+    .hero-bg { background-image: url('assets/facade.jpg'); }
+
+    /* Présentation section */
+    .presentation-section {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+    .presentation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .presentation-img-wrap {
+      position: relative;
+    }
+    .presentation-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
+    .presentation-img-deco {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 180px;
+      height: 180px;
+      background: linear-gradient(135deg, var(--rose-light), var(--cream-dark));
+      border-radius: var(--radius-xl);
+      z-index: -1;
+      border: 2px solid var(--rose);
+    }
+    .presentation-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+    .presentation-badge-num {
+      font-family: var(--font-script);
+      font-size: 2.5rem;
+      color: var(--rose-deep);
+      line-height: 1;
+    }
+    .presentation-badge-text {
+      font-size: 0.72rem;
+      color: var(--taupe);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .presentation-text p {
+      font-size: 1.05rem;
+      color: var(--taupe);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .presentation-values {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .presentation-value {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--dark-soft);
+      letter-spacing: 0.04em;
+    }
+    .pv-icon {
+      width: 36px; height: 36px;
+      background: var(--rose-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Head Spa section spéciale */
+    .headspa-section {
+      padding: 8rem 0;
+      background: linear-gradient(135deg, #1a0f0f 0%, #2d1a20 50%, #1a1510 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .headspa-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 60%, rgba(201,123,138,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 40%, rgba(201,169,110,0.12) 0%, transparent 60%);
+    }
+    .headspa-section .section-label { color: var(--gold-light); }
+    .headspa-section .section-title { color: var(--rose); }
+    .headspa-section .section-subtitle { color: rgba(255,255,255,0.6); }
+    .headspa-section .section-divider { background: linear-gradient(90deg, transparent, var(--gold-light), transparent); }
+    .headspa-desc {
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      font-weight: 300;
+    }
+    .headspa-after {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(201,169,110,0.2);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.875rem;
+      font-style: italic;
+    }
+
+    /* Tarifs populaires */
+    .tarifs-pop-section { background: var(--cream); }
+    .tarifs-pop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .tarif-pop-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+    }
+    .tarif-pop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+      border-bottom-color: var(--rose-deep);
+    }
+    .tarif-pop-cat {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .tarif-pop-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tarif-pop-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px dashed var(--cream-dark);
+    }
+    .tarif-pop-item:last-child { border-bottom: none; }
+    .tarif-pop-name { color: var(--dark-soft); }
+    .tarif-pop-price { color: var(--rose-deep); font-family: var(--font-serif); font-size: 1rem; }
+
+    /* Avis section */
+    .avis-section { background: var(--rose-light); padding: 5rem 0; }
+    .avis-notice {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius-xl);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .avis-notice p { color: var(--taupe); font-style: italic; margin-top: 0.75rem; }
+
+    /* Infos section */
+    .infos-section { background: var(--white); }
+
+    /* Enfants banner */
+    .enfants-banner {
+      background: linear-gradient(135deg, var(--rose-light) 0%, #fce8e8 100%);
+      border-radius: var(--radius-xl);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .enfants-banner::after {
+      content: '🎀';
+      position: absolute;
+      right: -30px; top: -30px;
+      font-size: 10rem;
+      opacity: 0.06;
+      transform: rotate(-15deg);
+    }
+    .enfants-banner-title {
+      font-family: var(--font-script);
+      font-size: 3rem;
+      color: var(--rose-deep);
+      margin-bottom: 1rem;
+    }
+    .enfants-banner-text {
+      color: var(--taupe);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .enfants-banner-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .enfants-banner-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+    .ebi-emoji { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
+    .ebi-name  { font-size: 0.82rem; color: var(--dark-soft); font-weight: 700; }
+    .ebi-price { font-family: var(--font-serif); font-size: 1.1rem; color: var(--rose-deep); }
+
+    @media (max-width: 1024px) {
+      .tarifs-pop-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .presentation-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .presentation-badge { left: 1rem; }
+      .tarifs-pop-grid { grid-template-columns: 1fr; }
+      .enfants-banner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+      .enfants-banner-items { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════ -->
+<header class="header transparent" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo" aria-label="Mon Passage Beauté — Accueil">
+      <img src="assets/logo.png" alt="Logo Mon Passage Beauté Institut" width="52" height="52">
+      <div class="logo-text">
+        <span class="logo-name">Mon Passage Beauté</span>
+        <span class="logo-tagline">Institut · Roanne</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <div class="nav-dropdown">
+        <a href="prestations.html" class="nav-link">Prestations ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="prestations.html#epilation">💫 Épilation</a>
+          <a href="prestations.html#soins-visage">✨ Soins du visage</a>
+          <a href="prestations.html#modelages">🌿 Modelages & Corps</a>
+          <a href="prestations.html#manucure">💅 Manucure & Pieds</a>
+          <a href="prestations.html#maquillage">👁️ Maquillage</a>
+          <a href="prestations.html#regard">🌸 Beauté du regard</a>
+          <a href="prestations.html#sublimation">☀️ Sublimation bronzante</a>
+        </div>
+      </div>
+      <a href="head-spa.html" class="nav-link">Holistic Head Spa</a>
+      <a href="enfants.html" class="nav-link">Enfants & Anniversaires</a>
+      <a href="galerie.html" class="nav-link">Galerie</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="nav-cta-wrap">
+      <a href="contact.html#rdv" class="btn btn-primary nav-cta" id="header-rdv-btn">
+        🌸 Prendre rendez-vous
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html">Accueil</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="prestations.html">Prestations</a>
+  <a href="head-spa.html">Holistic Head Spa</a>
+  <a href="enfants.html">Enfants & Anniversaires</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="tarifs.html">Tarifs</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html#rdv" class="btn btn-primary mt-3" id="mobile-rdv-btn">🌸 Prendre rendez-vous</a>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<section class="hero" id="accueil" aria-label="Bienvenue chez Mon Passage Beauté">
+  <div class="hero-bg" role="img" aria-label="Extérieur de l'institut Mon Passage Beauté à Roanne"></div>
+  <div class="hero-content">
+    <span class="hero-label">Institut de Beauté · Roanne</span>
+    <h1 class="hero-title">Mon Passage Beauté</h1>
+    <p class="hero-subtitle">Votre espace de beauté & de bien-être au cœur de Roanne</p>
+    <div class="hero-ctas">
+      <a href="contact.html#rdv" class="btn btn-primary" id="hero-rdv-btn">🌸 Prendre rendez-vous</a>
+      <a href="#prestations" class="btn btn-ghost" id="hero-prestations-btn">Découvrir les soins</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Découvrir</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PRÉSENTATION
+══════════════════════════════════════════════════════ -->
+<section class="presentation-section" id="a-propos">
+  <div class="container">
+    <div class="presentation-grid">
+      <div class="presentation-img-wrap reveal-left">
+        <img
+          src="assets/logo.png"
+          alt="Logo Mon Passage Beauté Institut — Roanne"
+          class="presentation-img"
+          style="object-fit: contain; padding: 2rem; background: var(--cream);"
+        >
+        <div class="presentation-img-deco" aria-hidden="true"></div>
+        <div class="presentation-badge">
+          <div class="presentation-badge-num">8+</div>
+          <div class="presentation-badge-text">catégories de soins</div>
+        </div>
+      </div>
+      <div class="presentation-text reveal-right">
+        <span class="section-label">L'Institut</span>
+        <h2 class="section-title">Un passage vers<br>la beauté</h2>
+        <div class="section-divider"></div>
+        <p>Bienvenue chez <strong>Mon Passage Beauté</strong>, votre institut de beauté situé au <strong>8 Passage Matel, à Roanne</strong>. Dans un espace chaleureux, élégant et intimiste, nous vous proposons une gamme complète de soins pensés pour révéler votre beauté naturelle.</p>
+        <p>Des épilations aux soins du visage, en passant par nos modelages bien-être, notre offre unique <strong>Holistic Head Spa</strong> et nos rituels dédiés aux enfants — chaque soin est réalisé avec attention, douceur et expertise.</p>
+        <p>Parce que prendre soin de soi est un acte essentiel, nous mettons tout en œuvre pour que votre passage soit une expérience mémorable.</p>
+        <div class="presentation-values">
+          <div class="presentation-value"><span class="pv-icon">✨</span> Soins personnalisés</div>
+          <div class="presentation-value"><span class="pv-icon">🌿</span> Produits qualitatifs</div>
+          <div class="presentation-value"><span class="pv-icon">💛</span> Ambiance chaleureuse</div>
+        </div>
+        <div class="mt-4 flex gap-1 flex-wrap">
+          <a href="contact.html#rdv" class="btn btn-primary" id="about-rdv-btn">Prendre rendez-vous</a>
+          <a href="contact.html" class="btn btn-secondary" id="about-contact-btn">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PRESTATIONS CATÉGORIES
+══════════════════════════════════════════════════════ -->
+<section class="section bg-cream" id="prestations">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Nos soins</span>
+      <h2 class="section-title reveal delay-1">Toutes nos prestations</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="section-subtitle reveal delay-3">Une offre complète pour prendre soin de vous, de la tête aux pieds</p>
+    </div>
+
+    <div class="categories-grid">
+      <a href="prestations.html#epilation" class="category-card reveal delay-1" id="cat-epilation">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #f9e4e2, #e8b4b0);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">💫</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Épilation</div>
+          <div class="category-card-count">Cire · Fil · Forfaits</div>
+        </div>
+      </a>
+
+      <a href="prestations.html#soins-visage" class="category-card reveal delay-2" id="cat-visage">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #f5ede4, #e8d5b0);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">✨</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Soins du visage</div>
+          <div class="category-card-count">Bio by Oxalia</div>
+        </div>
+      </a>
+
+      <a href="prestations.html#modelages" class="category-card reveal delay-3" id="cat-modelages">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #e8f0e4, #c5dbb8);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">🌿</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Modelages & Corps</div>
+          <div class="category-card-count">Escapades · Parenthèses</div>
+        </div>
+      </a>
+
+      <a href="prestations.html#manucure" class="category-card reveal delay-1" id="cat-manucure">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #fce8e8, #f9c8cc);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">💅</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Manucure & Pieds</div>
+          <div class="category-card-count">Soins · Vernis</div>
+        </div>
+      </a>
+
+      <a href="head-spa.html" class="category-card reveal delay-2" id="cat-headspa" style="border: 2px solid rgba(201,169,110,0.4);">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #2d1a20, #1a1510);"></div>
+        <div class="category-card-overlay" style="background: linear-gradient(to top, rgba(201,169,110,0.6) 0%, rgba(0,0,0,0.1) 60%);"></div>
+        <div class="category-card-icon" style="border-color: rgba(201,169,110,0.5);">✦</div>
+        <div class="category-card-content">
+          <div class="category-card-title" style="color: var(--gold-light);">Holistic Head Spa</div>
+          <div class="category-card-count" style="color: rgba(201,169,110,0.8);">Expérience signature ⭐</div>
+        </div>
+      </a>
+
+      <a href="prestations.html#regard" class="category-card reveal delay-3" id="cat-regard">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #e8e4f4, #c8bfe8);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">👁️</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Beauté du regard</div>
+          <div class="category-card-count">Teinture · Réhausseur</div>
+        </div>
+      </a>
+
+      <a href="prestations.html#maquillage" class="category-card reveal delay-1" id="cat-maquillage">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #f9ead4, #f0d0a4);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">💋</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Maquillage</div>
+          <div class="category-card-count">Jour · Soir · Mariée</div>
+        </div>
+      </a>
+
+      <a href="enfants.html" class="category-card reveal delay-2" id="cat-enfants">
+        <div class="category-card-bg" style="background: linear-gradient(135deg, #fce8f4, #f0c8e0);"></div>
+        <div class="category-card-overlay"></div>
+        <div class="category-card-icon">🌸</div>
+        <div class="category-card-content">
+          <div class="category-card-title">Soins Enfants</div>
+          <div class="category-card-count">Rituels · Anniversaires 🎂</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-4 reveal">
+      <a href="prestations.html" class="btn btn-secondary" id="all-prestations-btn">Voir toutes les prestations</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     HOLISTIC HEAD SPA
+══════════════════════════════════════════════════════ -->
+<section class="headspa-section" id="head-spa-preview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Expérience signature</span>
+      <h2 class="section-title reveal delay-1">Holistic Head Spa</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="section-subtitle reveal delay-3">Notre soin d'exception pour une évasion totale</p>
+    </div>
+
+    <p class="headspa-desc reveal">
+      Plongez dans une expérience sensorielle unique. Accueil olfactif, soin du visage, gommage et massage du cuir chevelu, shampooings adaptés, cascade d'eau tiède et modelages… Le Head Spa est bien plus qu'un soin, c'est une véritable évasion.
+    </p>
+
+    <div class="headspa-grid">
+      <div class="headspa-card reveal delay-1">
+        <img src="assets/headspa-decouverte.jpg" alt="Holistic Head Spa Découverte — 45 minutes" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag">Découverte</span>
+          <h3 class="headspa-card-title">Découverte</h3>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 45 min</span>
+            <span class="headspa-price">60 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu</div>
+            <div class="headspa-feature">Massage du cuir chevelu</div>
+            <div class="headspa-feature">Shampoing & masque adaptés</div>
+            <div class="headspa-feature">Cascade d'eau tiède</div>
+            <div class="headspa-feature">Modelage visage, épaules, nuque, bras</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-gold" id="hs-decouverte-rdv" style="width:100%; justify-content: center;">Réserver ce soin</a>
+        </div>
+      </div>
+
+      <div class="headspa-card reveal delay-2">
+        <img src="assets/headspa-evasion.jpg" alt="Holistic Head Spa L'Évasion — 1h10" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag">Populaire ✦</span>
+          <h3 class="headspa-card-title">L'Évasion</h3>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 1h10</span>
+            <span class="headspa-price">90 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu</div>
+            <div class="headspa-feature">Massage du cuir chevelu</div>
+            <div class="headspa-feature">2 shampooings & masque soin adaptés</div>
+            <div class="headspa-feature">Cascade d'eau tiède et vapeur</div>
+            <div class="headspa-feature">Modelage visage, épaules, nuque, bras, demi-jambes</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-gold" id="hs-evasion-rdv" style="width:100%; justify-content: center;">Réserver ce soin</a>
+        </div>
+      </div>
+
+      <div class="headspa-card reveal delay-3">
+        <img src="assets/headspa-absolue.jpg" alt="Holistic Head Spa L'Évasion Absolue — 1h30" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag">Prestige ✦✦</span>
+          <h3 class="headspa-card-title">L'Évasion Absolue</h3>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 1h30</span>
+            <span class="headspa-price">115 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu</div>
+            <div class="headspa-feature">Massage du cuir chevelu +15 min</div>
+            <div class="headspa-feature">2 shampooings & masque adaptés</div>
+            <div class="headspa-feature">Cascade d'eau tiède et vapeur</div>
+            <div class="headspa-feature">Modelage holistique : visage, nuque, épaules, bras, demi-jambes</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-gold" id="hs-absolue-rdv" style="width:100%; justify-content: center;">Réserver ce soin</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="headspa-after reveal">
+      ✦ Après votre soin : sèche-cheveux, lisseur à disposition · Boisson gourmande offerte ✦
+    </div>
+
+    <div class="text-center mt-4 reveal">
+      <a href="head-spa.html" class="btn btn-ghost" id="headspa-more-btn">Découvrir le Head Spa en détail</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ENFANTS & ANNIVERSAIRES
+══════════════════════════════════════════════════════ -->
+<section class="section bg-white" id="enfants-preview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Pour les petites princesses & super héros</span>
+      <h2 class="section-title reveal delay-1">Soins Enfants & Anniversaires</h2>
+      <div class="section-divider reveal delay-2"></div>
+    </div>
+    <div class="enfants-banner reveal">
+      <div>
+        <div class="enfants-banner-title">Une magie dédiée aux enfants</div>
+        <p class="enfants-banner-text">
+          Des rituels beauté pensés spécialement pour les petits, dans un cadre doux et bienveillant. Et pour les anniversaires, une formule magique avec mini soin visage, pose de vernis, atelier tattoo paillettes et boisson offerte !
+        </p>
+        <div class="flex gap-1 flex-wrap">
+          <a href="enfants.html" class="btn btn-primary" id="enfants-more-btn">Voir les rituels enfants</a>
+          <a href="contact.html#rdv" class="btn btn-secondary" id="anniv-rdv-btn">Organiser un anniversaire 🎂</a>
+        </div>
+      </div>
+      <div class="enfants-banner-items">
+        <div class="enfants-banner-item">
+          <span class="ebi-emoji">👑</span>
+          <div class="ebi-name">Rituel Princesse/Prince</div>
+          <div class="ebi-price">25 €</div>
+        </div>
+        <div class="enfants-banner-item">
+          <span class="ebi-emoji">🩰</span>
+          <div class="ebi-name">Rituel Jolie Ballerine</div>
+          <div class="ebi-price">35 €</div>
+        </div>
+        <div class="enfants-banner-item">
+          <span class="ebi-emoji">🌟</span>
+          <div class="ebi-name">Rituel Divin</div>
+          <div class="ebi-price">47 €</div>
+        </div>
+        <div class="enfants-banner-item">
+          <span class="ebi-emoji">💞</span>
+          <div class="ebi-name">Soin Mère/Fille</div>
+          <div class="ebi-price">80 €</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TARIFS POPULAIRES
+══════════════════════════════════════════════════════ -->
+<section class="section tarifs-pop-section" id="tarifs-preview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Transparence tarifaire</span>
+      <h2 class="section-title reveal delay-1">Nos tarifs</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="section-subtitle reveal delay-3">Une sélection de nos prestations — retrouvez tous les tarifs sur la page dédiée</p>
+    </div>
+
+    <div class="tarifs-pop-grid">
+      <div class="tarif-pop-card reveal delay-1">
+        <div class="tarif-pop-cat">💫 Épilation Femmes</div>
+        <div class="tarif-pop-list">
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Jambe entière (cire)</span><span class="tarif-pop-price">26 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Demi-jambes</span><span class="tarif-pop-price">18 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Maillot simple</span><span class="tarif-pop-price">12 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Maillot intégral</span><span class="tarif-pop-price">27 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Aisselles</span><span class="tarif-pop-price">12 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Sourcils entretien (fil)</span><span class="tarif-pop-price">12 €</span></div>
+        </div>
+        <div class="mt-3" style="font-size: 0.75rem; color: var(--gold-dark); font-style: italic;">✦ Remise étudiants -15% sur épilation</div>
+      </div>
+
+      <div class="tarif-pop-card reveal delay-2">
+        <div class="tarif-pop-cat">✨ Soins du visage</div>
+        <div class="tarif-pop-list">
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Coup d'éclat — 30 min</span><span class="tarif-pop-price">35 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Éclat nettoyant — 45 min</span><span class="tarif-pop-price">49 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Éclat divin — 60 min</span><span class="tarif-pop-price">59 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Éclat précieux — 75 min</span><span class="tarif-pop-price">75 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Anti-rides Madero — 90 min</span><span class="tarif-pop-price">87 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Yeux doux — 45 min</span><span class="tarif-pop-price">45 €</span></div>
+        </div>
+        <div class="mt-3"><span class="badge badge-new">NOUVEAU Anti-rides Madero</span></div>
+      </div>
+
+      <div class="tarif-pop-card reveal delay-3">
+        <div class="tarif-pop-cat">🌿 Modelages & Corps</div>
+        <div class="tarif-pop-list">
+          <div class="tarif-pop-item"><span class="tarif-pop-name">La Parenthèse (visage/corps/dos) — 30 min</span><span class="tarif-pop-price">32 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">L'Escapade Balinaise — 60 min</span><span class="tarif-pop-price">61 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">L'Escapade Polynésienne — 60 min</span><span class="tarif-pop-price">61 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">La Traversée Scandinave — 60 min</span><span class="tarif-pop-price">61 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">L'Envolée Orientale — 60 min</span><span class="tarif-pop-price">61 €</span></div>
+          <div class="tarif-pop-item"><span class="tarif-pop-name">Soin complet du dos — 45 min</span><span class="tarif-pop-price">45 €</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4 reveal">
+      <a href="tarifs.html" class="btn btn-secondary" id="all-tarifs-btn">Voir tous les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CTA CENTRAL
+══════════════════════════════════════════════════════ -->
+<div class="cta-banner">
+  <h2 class="cta-banner-title reveal">Prenez soin de vous</h2>
+  <p class="cta-banner-text reveal delay-1">Réservez dès maintenant votre soin et offrez-vous un moment de beauté et de bien-être chez Mon Passage Beauté à Roanne.</p>
+  <div class="cta-banner-ctas reveal delay-2">
+    <a href="contact.html#rdv" class="btn btn-ghost" id="cta-rdv-btn">🌸 Prendre rendez-vous</a>
+    <a href="tel:0613422155" class="btn" style="background: rgba(255,255,255,0.15); color: white; border: 1.5px solid rgba(255,255,255,0.4);" id="cta-tel-btn">📞 06 13 42 21 55</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     INFORMATIONS PRATIQUES
+══════════════════════════════════════════════════════ -->
+<section class="section infos-section" id="infos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Nous trouver</span>
+      <h2 class="section-title reveal delay-1">Informations pratiques</h2>
+      <div class="section-divider reveal delay-2"></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card reveal delay-1">
+        <div class="info-card-icon">📍</div>
+        <h3 class="info-card-title">Adresse</h3>
+        <div class="info-card-content">
+          <strong>8 Passage Matel</strong><br>
+          42300 Roanne<br><br>
+          <a href="https://maps.google.com/?q=8+Passage+Matel+42300+Roanne" target="_blank" rel="noopener" id="maps-link" style="color: var(--rose-deep);">Voir sur Google Maps →</a>
+          <div style="margin-top: 1.5rem; border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-soft);">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2777.6748466185885!2d4.077271976694708!3d46.04634209503799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f3a8b4b7454f3b%3A0x6b8db7c0ed43d6c!2s8%20Passage%20Matel%2C%2042300%20Roanne!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">⏰</div>
+        <h3 class="info-card-title">Horaires</h3>
+        <div class="info-card-content">
+          <table class="horaires-table">
+            <tr><td>Lundi</td><td class="horaire-rdv">Sur rendez-vous uniquement</td></tr>
+            <tr><td>Mardi</td><td>9h – 19h</td></tr>
+            <tr><td>Mercredi</td><td class="horaire-closed">Fermé</td></tr>
+            <tr><td>Jeudi</td><td>9h – 19h</td></tr>
+            <tr><td>Vendredi</td><td>9h – 19h</td></tr>
+            <tr><td>Samedi</td><td>9h – 17h</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">📞</div>
+        <h3 class="info-card-title">Contact</h3>
+        <div class="info-card-content" style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center;">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--taupe); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Téléphone</div>
+            <a href="tel:0613422155" id="tel-link" style="font-size: 1.3rem; font-family: var(--font-serif); font-weight: 700; color: var(--rose-deep); text-decoration: none;">06 13 42 21 55</a>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--taupe); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Email</div>
+            <a href="mailto:Monpassagebeaute@gmail.com" id="email-link" style="color: var(--dark-soft); font-weight: 500; text-decoration: none; border-bottom: 1px dashed var(--cream-dark);">Monpassagebeaute@gmail.com</a>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--taupe); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem;">Réseaux sociaux</div>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+              <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" id="fb-link" style="width: 40px; height: 40px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: var(--transition); border: 1px solid var(--cream-dark);" onmouseover="this.style.background='var(--rose-light)'; this.style.borderColor='var(--rose-deep)'" onmouseout="this.style.background='var(--cream)'; this.style.borderColor='var(--cream-dark)'">📘</a>
+              <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" id="ig-link" style="width: 40px; height: 40px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; text-decoration: none; transition: var(--transition); border: 1px solid var(--cream-dark);" onmouseover="this.style.background='var(--rose-light)'; this.style.borderColor='var(--rose-deep)'" onmouseout="this.style.background='var(--cream)'; this.style.borderColor='var(--cream-dark)'">📷</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="48" height="48">
+          <span class="footer-brand-name">Mon Passage Beauté</span>
+        </div>
+        <p class="footer-brand-desc">Votre institut de beauté & bien-être à Roanne. Épilations, soins, modelages, Holistic Head Spa et rituels enfants.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" id="footer-fb" class="footer-social" aria-label="Facebook Mon Passage Beauté">📘</a>
+          <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" id="footer-ig" class="footer-social" aria-label="Instagram Monpassagebeauté">📷</a>
+          <a href="tel:0613422155" id="footer-tel" class="footer-social" aria-label="Appeler Mon Passage Beauté">📞</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Prestations</h4>
+        <ul class="footer-links">
+          <li><a href="prestations.html#epilation">Épilation</a></li>
+          <li><a href="prestations.html#soins-visage">Soins du visage</a></li>
+          <li><a href="prestations.html#modelages">Modelages & Corps</a></li>
+          <li><a href="prestations.html#manucure">Manucure & Pieds</a></li>
+          <li><a href="prestations.html#regard">Beauté du regard</a></li>
+          <li><a href="head-spa.html">Holistic Head Spa</a></li>
+          <li><a href="enfants.html">Soins Enfants</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Institut</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#a-propos">À propos</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#rdv">Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nous trouver</h4>
+        <ul class="footer-links">
+          <li><a href="https://maps.google.com/?q=8+Passage+Matel+42300+Roanne" target="_blank" rel="noopener">8 Passage Matel</a></li>
+          <li><span style="color: rgba(255,255,255,0.4);">42300 Roanne</span></li>
+          <li><a href="tel:0613422155">06 13 42 21 55</a></li>
+          <li><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></li>
+        </ul>
+        <div style="margin-top: 1.25rem; font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.7;">
+          Mar · Jeu · Ven : 9h–19h<br>
+          Samedi : 9h–17h<br>
+          Lundi : sur RDV
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Mon Passage Beauté — Institut · 8 Passage Matel, 42300 Roanne</p>
+      <p>
+        <a href="#" style="color: rgba(255,255,255,0.4);">Mentions légales</a>
+        &nbsp;·&nbsp;
+        <a href="#" style="color: rgba(255,255,255,0.4);">Politique de confidentialité</a>
+        &nbsp;·&nbsp;
+        <a href="#" style="color: rgba(255,255,255,0.4);">Cookies</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Agrandissement d'image">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">✕</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scroll-top" aria-label="Retour en haut de page">↑</button>
+
+<!-- Floating CTA mobile -->
+<div class="floating-cta">
+  <a href="contact.html#rdv" class="btn btn-primary" id="floating-rdv-btn">🌸 Réserver</a>
+</div>
+
+<!-- JSON-LD LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Mon Passage Beauté — Institut",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8 Passage Matel",
+    "addressLocality": "Roanne",
+    "postalCode": "42300",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33613422155",
+  "email": "Monpassagebeaute@gmail.com",
+  "openingHours": [
+    "Mo 00:00-00:00",
+    "Tu 09:00-19:00",
+    "Th 09:00-19:00",
+    "Fr 09:00-19:00",
+    "Sa 09:00-17:00"
+  ],
+  "priceRange": "€€",
+  "servesCuisine": "Beauty treatments"
+}
+</script>
+
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
+
+
+
+
+
+

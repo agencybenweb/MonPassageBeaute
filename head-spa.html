@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holistic Head Spa — Mon Passage Beauté · Roanne</title>
+  <meta name="description" content="Découvrez le Holistic Head Spa chez Mon Passage Beauté à Roanne. Accueil olfactif, gommage, massage cuir chevelu, cascade d'eau, modelages. Formules Découverte 60€, L'Évasion 90€, L'Évasion Absolue 115€.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .hs-hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background: #1a0f0f;
+    }
+    .hs-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/headspa-banner.jpg') center/cover no-repeat;
+      opacity: 0.4;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+    .hs-hero.loaded .hs-hero-bg { transform: scale(1); }
+    .hs-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26,15,15,0.3) 0%, rgba(26,15,15,0.7) 100%);
+    }
+    .hs-hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 2rem;
+      max-width: 900px;
+    }
+    .hs-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201,169,110,0.2);
+      border: 1px solid rgba(201,169,110,0.4);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s ease forwards;
+    }
+    .hs-hero-title {
+      font-family: var(--font-script);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      color: var(--white);
+      line-height: 1;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s ease forwards;
+    }
+    .hs-hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s ease forwards;
+    }
+    .hs-hero-prices {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.85s ease forwards;
+    }
+    .hs-price-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(201,169,110,0.3);
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .hs-price-pill-dur { font-size: 0.7rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .hs-price-pill-name { font-family: var(--font-serif); font-size: 1rem; color: var(--white); }
+    .hs-price-pill-val { font-family: var(--font-serif); font-size: 1.3rem; color: var(--gold-light); }
+
+    /* Experience section */
+    .experience-section {
+      background: linear-gradient(180deg, #1a0f0f 0%, #0d0808 100%);
+      padding: 7rem 0;
+      position: relative;
+    }
+    .experience-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .exp-step {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(201,169,110,0.15);
+      transition: var(--transition);
+    }
+    .exp-step:hover {
+      background: rgba(201,123,138,0.08);
+      border-color: rgba(201,123,138,0.3);
+      transform: translateY(-4px);
+    }
+    .exp-step-num {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--white);
+      margin: 0 auto 1.25rem;
+    }
+    .exp-step-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--white); margin-bottom: 0.75rem; }
+    .exp-step-desc  { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .experience-section .section-label  { color: var(--gold-light); }
+    .experience-section .section-title  { color: rgba(255,255,255,0.95); }
+    .experience-section .section-subtitle { color: rgba(255,255,255,0.55); }
+    .experience-section .section-divider { background: linear-gradient(90deg, transparent, var(--gold-light), transparent); }
+
+    /* Formules section */
+    .formules-section { background: var(--cream); padding: 7rem 0; }
+
+    /* Enfants HS */
+    .hs-enfants {
+      background: linear-gradient(135deg, #1a0f0f, #1a1510);
+      padding: 5rem 0;
+    }
+    .hs-enfants-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hs-enfants-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-lg);
+    }
+    .hs-enfants .section-label { color: var(--gold-light); }
+    .hs-enfants-title { font-family: var(--font-script); font-size: 2.8rem; color: var(--rose); margin-bottom: 0.5rem; }
+    .hs-enfants-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
+    .hs-enfants-dur  { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    .hs-enfants-price{ font-family: var(--font-serif); font-size: 1.6rem; color: var(--gold-light); }
+    .hs-enfants-features { margin-bottom: 2rem; }
+
+    /* After soin */
+    .after-soin {
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .after-soin h3 { font-family: var(--font-serif); color: var(--gold-light); margin-bottom: 1rem; font-size: 1.1rem; letter-spacing: 0.08em; }
+    .after-soin-items {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .after-soin-item { color: rgba(255,255,255,0.65); font-size: 0.875rem; display: flex; align-items: center; gap: 0.4rem; }
+
+    @media (max-width: 768px) {
+      .experience-steps { grid-template-columns: 1fr; }
+      .hs-enfants-card  { grid-template-columns: 1fr; }
+      .hs-hero-prices   { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="52" height="52">
+      <div class="logo-text">
+        <span class="logo-name">Mon Passage Beauté</span>
+        <span class="logo-tagline">Institut · Roanne</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-dropdown">
+        <a href="prestations.html" class="nav-link">Prestations ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="prestations.html#epilation">💫 Épilation</a>
+          <a href="prestations.html#soins-visage">✨ Soins du visage</a>
+          <a href="prestations.html#modelages">🌿 Modelages & Corps</a>
+          <a href="prestations.html#manucure">💅 Manucure & Pieds</a>
+          <a href="prestations.html#maquillage">💋 Maquillage</a>
+          <a href="prestations.html#regard">👁️ Beauté du regard</a>
+        </div>
+      </div>
+      <a href="head-spa.html" class="nav-link active">Holistic Head Spa</a>
+      <a href="enfants.html" class="nav-link">Enfants & Anniversaires</a>
+      <a href="galerie.html" class="nav-link">Galerie</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-cta-wrap">
+      <a href="contact.html#rdv" class="btn btn-primary nav-cta" id="header-rdv-btn">🌸 Prendre rendez-vous</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="prestations.html">Prestations</a>
+  <a href="head-spa.html">Holistic Head Spa</a>
+  <a href="enfants.html">Enfants & Anniversaires</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="tarifs.html">Tarifs</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html#rdv" class="btn btn-primary mt-3">🌸 Prendre rendez-vous</a>
+</div>
+
+<!-- HERO HEAD SPA -->
+<section class="hs-hero" id="headspa-hero">
+  <div class="hs-hero-bg"></div>
+  <div class="hs-hero-overlay"></div>
+  <div class="hs-hero-content">
+    <div class="hs-hero-badge">✦ Expérience signature · Mon Passage Beauté</div>
+    <h1 class="hs-hero-title">Holistic Head Spa</h1>
+    <p class="hs-hero-subtitle">Une expérience sensorielle unique pour l'éveil du corps et de l'esprit</p>
+    <div class="hs-hero-prices">
+      <div class="hs-price-pill">
+        <div class="hs-price-pill-dur">45 min</div>
+        <div class="hs-price-pill-name">Découverte</div>
+        <div class="hs-price-pill-val">60 €</div>
+      </div>
+      <div class="hs-price-pill" style="border-color: rgba(201,123,138,0.4); background: rgba(201,123,138,0.1);">
+        <div class="hs-price-pill-dur">1h10</div>
+        <div class="hs-price-pill-name">L'Évasion</div>
+        <div class="hs-price-pill-val">90 €</div>
+      </div>
+      <div class="hs-price-pill" style="border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.15);">
+        <div class="hs-price-pill-dur">1h30</div>
+        <div class="hs-price-pill-name">L'Évasion Absolue</div>
+        <div class="hs-price-pill-val">115 €</div>
+      </div>
+    </div>
+    <div style="opacity:0; animation: fadeUp 0.9s 1s ease forwards;">
+      <a href="contact.html#rdv" class="btn btn-gold" id="hs-hero-rdv">Réserver mon Head Spa</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCE EN ÉTAPES -->
+<section class="experience-section" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">L'expérience</span>
+      <h2 class="section-title reveal delay-1">Un rituel d'exception</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="section-subtitle reveal delay-3">Chaque soin Head Spa est une invitation au voyage sensoriel</p>
+    </div>
+    <div class="experience-steps">
+      <div class="exp-step reveal delay-1">
+        <div class="exp-step-num">1</div>
+        <div class="exp-step-title">Accueil olfactif</div>
+        <div class="exp-step-desc">Votre soin débute par un accueil sensoriel aux effluves apaisants, préparant votre esprit à l'évasion.</div>
+      </div>
+      <div class="exp-step reveal delay-2">
+        <div class="exp-step-num">2</div>
+        <div class="exp-step-title">Soin du visage</div>
+        <div class="exp-step-desc">Un soin visage personnalisé pour une peau lumineuse et apaisée.</div>
+      </div>
+      <div class="exp-step reveal delay-3">
+        <div class="exp-step-num">3</div>
+        <div class="exp-step-title">Gommage cuir chevelu</div>
+        <div class="exp-step-desc">Élimination des impuretés et stimulation de la circulation pour un cuir chevelu sain et revitalisé.</div>
+      </div>
+      <div class="exp-step reveal delay-1">
+        <div class="exp-step-num">4</div>
+        <div class="exp-step-title">Massage cuir chevelu</div>
+        <div class="exp-step-desc">Un massage profond et libérateur, véritable voyage de relaxation.</div>
+      </div>
+      <div class="exp-step reveal delay-2">
+        <div class="exp-step-num">5</div>
+        <div class="exp-step-title">Shampooings & masque</div>
+        <div class="exp-step-desc">Des soins capillaires adaptés aux besoins de vos cheveux, pour une chevelure sublimée.</div>
+      </div>
+      <div class="exp-step reveal delay-3">
+        <div class="exp-step-num">6</div>
+        <div class="exp-step-title">Cascade & modelages</div>
+        <div class="exp-step-desc">Cascade d'eau tiède, vapeur apaisante, puis modelages selon votre formule. L'évasion absolue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULES -->
+<section class="formules-section" id="formules">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Choisissez votre évasion</span>
+      <h2 class="section-title reveal delay-1">Nos formules Head Spa</h2>
+      <div class="section-divider reveal delay-2"></div>
+    </div>
+
+    <div class="headspa-grid">
+      <!-- DÉCOUVERTE -->
+      <div class="headspa-card reveal delay-1">
+        <img src="assets/headspa-decouverte.jpg" alt="Holistic Head Spa Découverte 45 minutes 60 euros" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag">Découverte</span>
+          <h2 class="headspa-card-title">Découverte</h2>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 45 min</span>
+            <span class="headspa-price">60 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu pour éliminer les impuretés et stimuler la circulation</div>
+            <div class="headspa-feature">Massage du cuir chevelu</div>
+            <div class="headspa-feature">Shampoing et masque soin adaptés aux besoins de vos cheveux</div>
+            <div class="headspa-feature">Cascade d'eau tiède</div>
+            <div class="headspa-feature">Modelage du visage, épaules, nuque, bras</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-gold" id="fd-decouverte-rdv" style="width:100%; justify-content: center;">Réserver — 60 €</a>
+        </div>
+      </div>
+
+      <!-- L'ÉVASION -->
+      <div class="headspa-card reveal delay-2" style="border-color: var(--gold-light); position: relative;">
+        <div style="position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; padding: 0.3rem 1rem; border-radius: 20px; white-space: nowrap; z-index: 10;">⭐ POPULAIRE</div>
+        <img src="assets/headspa-evasion.jpg" alt="Holistic Head Spa L'Évasion 1h10 90 euros" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag" style="background: linear-gradient(135deg, var(--rose-deep), var(--gold-dark));">L'Évasion</span>
+          <h2 class="headspa-card-title">L'Évasion</h2>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 1h10</span>
+            <span class="headspa-price">90 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu pour éliminer les impuretés et stimuler la circulation</div>
+            <div class="headspa-feature">Massage du cuir chevelu</div>
+            <div class="headspa-feature">Deux shampooings et un masque soin adaptés aux besoins de vos cheveux</div>
+            <div class="headspa-feature">Cascade d'eau tiède et vapeur pour une relaxation profonde</div>
+            <div class="headspa-feature">Modelage du visage, épaules, nuque, bras, demi-jambes</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-primary" id="fd-evasion-rdv" style="width:100%; justify-content: center;">Réserver — 90 €</a>
+        </div>
+      </div>
+
+      <!-- L'ÉVASION ABSOLUE -->
+      <div class="headspa-card reveal delay-3">
+        <img src="assets/headspa-absolue.jpg" alt="Holistic Head Spa L'Évasion Absolue 1h30 115 euros" class="headspa-card-img">
+        <div class="headspa-card-body">
+          <span class="headspa-card-tag" style="background: linear-gradient(135deg, #2d1a20, #4a3020);">L'Évasion Absolue ✦✦</span>
+          <h2 class="headspa-card-title">L'Évasion Absolue</h2>
+          <div class="headspa-card-meta">
+            <span class="headspa-duration">⏱ 1h30</span>
+            <span class="headspa-price">115 €</span>
+          </div>
+          <div class="headspa-features">
+            <div class="headspa-feature">Accueil olfactif</div>
+            <div class="headspa-feature">Soin du visage</div>
+            <div class="headspa-feature">Gommage du cuir chevelu pour éliminer les impuretés et stimuler la circulation</div>
+            <div class="headspa-feature">Massage du cuir chevelu + 15 min de massage prolongé</div>
+            <div class="headspa-feature">Deux shampooings et un masque soin adaptés aux besoins de vos cheveux</div>
+            <div class="headspa-feature">Cascade d'eau tiède et vapeur pour une relaxation profonde</div>
+            <div class="headspa-feature">Modelage holistique du visage, nuque, épaules, bras et demi-jambes — pour une évasion absolue</div>
+          </div>
+          <a href="contact.html#rdv" class="btn btn-gold" id="fd-absolue-rdv" style="width:100%; justify-content: center;">Réserver — 115 €</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- After soin -->
+    <div class="after-soin reveal" style="background: var(--cream-dark); border-color: var(--rose-light); margin-top: 3rem;">
+      <h3 style="color: var(--rose-deep);">✦ Après votre soin ✦</h3>
+      <div class="after-soin-items" style="color: var(--taupe);">
+        <div class="after-soin-item" style="color: var(--taupe);">💨 Sèche-cheveux à disposition</div>
+        <div class="after-soin-item" style="color: var(--taupe);">✨ Lisseur à disposition</div>
+        <div class="after-soin-item" style="color: var(--taupe);">☕ Boisson gourmande offerte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEAD SPA ENFANTS -->
+<section class="hs-enfants" id="headspa-enfants">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Pour les petits aussi</span>
+      <h2 class="section-title reveal delay-1" style="color: var(--rose);">Head Spa Enfants</h2>
+      <div class="section-divider reveal delay-2" style="background: linear-gradient(90deg, transparent, var(--gold-light), transparent);"></div>
+    </div>
+    <div class="hs-enfants-card reveal">
+      <img src="assets/headspa-enfants.jpg" alt="Holistic Head Spa Enfants 6-15 ans" class="hs-enfants-img">
+      <div>
+        <span class="section-label">6 – 15 ans</span>
+        <div class="hs-enfants-title">Head Spa Enfants</div>
+        <div class="hs-enfants-meta">
+          <span class="hs-enfants-dur">⏱ 30 min</span>
+          <span class="hs-enfants-price">45 €</span>
+        </div>
+        <div class="hs-enfants-features">
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Soin du visage adapté</div>
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Gommage doux du cuir chevelu</div>
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Massage du cuir chevelu</div>
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Shampoing et masque soin adaptés</div>
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Cascade d'eau tiède</div>
+          <div class="headspa-feature" style="color: rgba(255,255,255,0.75);">Modelage du visage, épaules, nuque, bras</div>
+        </div>
+        <div style="font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; font-style: italic;">
+          * Sèche-cheveux et lisseur à disposition après le soin
+        </div>
+        <a href="contact.html#rdv" class="btn btn-gold" id="hs-enfants-rdv">Réserver pour 45 €</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 class="cta-banner-title reveal">Offrez-vous l'évasion</h2>
+  <p class="cta-banner-text reveal delay-1">Réservez votre Head Spa et laissez-vous emporter dans une expérience sensorielle unique chez Mon Passage Beauté.</p>
+  <div class="cta-banner-ctas reveal delay-2">
+    <a href="contact.html#rdv" class="btn btn-ghost" id="hs-cta-rdv">🌸 Réserver mon Head Spa</a>
+    <a href="tel:0613422155" class="btn" style="background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.35);">📞 06 13 42 21 55</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="48" height="48">
+          <span class="footer-brand-name">Mon Passage Beauté</span>
+        </div>
+        <p class="footer-brand-desc">Institut de beauté & bien-être · 8 Passage Matel, 42300 Roanne.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📘</a>
+          <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📷</a>
+          <a href="tel:0613422155" class="footer-social">📞</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Head Spa</h4>
+        <ul class="footer-links">
+          <li><a href="#formules">Formule Découverte</a></li>
+          <li><a href="#formules">L'Évasion</a></li>
+          <li><a href="#formules">L'Évasion Absolue</a></li>
+          <li><a href="#headspa-enfants">Head Spa Enfants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institut</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Toutes les prestations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html#rdv">Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0613422155">06 13 42 21 55</a></li>
+          <li><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></li>
+          <li><span style="color: rgba(255,255,255,0.35);">8 Passage Matel, Roanne</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mon Passage Beauté — Institut · Roanne</p>
+      <p><a href="#" style="color: rgba(255,255,255,0.35);">Mentions légales</a> · <a href="#" style="color: rgba(255,255,255,0.35);">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top">↑</button>
+<div class="floating-cta">
+  <a href="contact.html#rdv" class="btn btn-primary">🌸 Réserver</a>
+</div>
+
+<script>
+  // Ken Burns pour hero Head Spa
+  const hsHero = document.querySelector('.hs-hero');
+  if (hsHero) setTimeout(() => hsHero.classList.add('loaded'), 100);
+</script>
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
+
+
+
+
+
+

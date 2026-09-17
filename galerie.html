@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie — Mon Passage Beauté · Institut de beauté Roanne</title>
+  <meta name="description" content="Galerie photos de Mon Passage Beauté, institut de beauté à Roanne. Découvrez nos soins, notre institut et nos réalisations.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .galerie-grid-full {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .galerie-item-full {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      background: var(--cream-dark);
+      transition: var(--transition);
+    }
+    .galerie-item-full:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .galerie-item-full img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+      display: block;
+    }
+    .galerie-item-full:hover img { transform: scale(1.08); }
+    .galerie-item-full .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(201,123,138,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: var(--white);
+      font-size: 2rem;
+    }
+    .galerie-item-full:hover .gal-overlay { background: rgba(201,123,138,0.35); }
+
+    /* Layout special */
+    .gi-large  { grid-column: span 2; aspect-ratio: 16/9; }
+    .gi-normal { aspect-ratio: 1; }
+    .gi-tall   { grid-row: span 2; aspect-ratio: 9/16; }
+
+    /* Placeholder */
+    .gal-placeholder {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--cream-dark), var(--rose-light));
+      border: 2px dashed var(--rose);
+      border-radius: var(--radius-md);
+      color: var(--taupe-light);
+      text-align: center;
+      padding: 1.5rem;
+      cursor: default;
+    }
+    .gal-placeholder-icon { font-size: 2.5rem; opacity: 0.5; }
+    .gal-placeholder-text { font-size: 0.78rem; line-height: 1.5; }
+
+    .instagram-section {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .instagram-section h2 { color: var(--white); }
+    .instagram-section .section-subtitle { color: rgba(255,255,255,0.8); }
+    .instagram-section .section-label { color: rgba(255,255,255,0.7); }
+    .ig-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius-xl);
+      padding: 1rem 2rem;
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+    }
+    .ig-handle:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .galerie-grid-full { grid-template-columns: repeat(2, 1fr); }
+      .gi-large { grid-column: span 2; aspect-ratio: 4/3; }
+      .gi-tall  { grid-row: span 1; aspect-ratio: 1; }
+    }
+    @media (max-width: 480px) {
+      .galerie-grid-full { grid-template-columns: 1fr; }
+      .gi-large { grid-column: span 1; aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header scrolled" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="52" height="52">
+      <div class="logo-text">
+        <span class="logo-name">Mon Passage Beauté</span>
+        <span class="logo-tagline">Institut · Roanne</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-dropdown">
+        <a href="prestations.html" class="nav-link">Prestations ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="prestations.html#epilation">💫 Épilation</a>
+          <a href="prestations.html#soins-visage">✨ Soins du visage</a>
+          <a href="prestations.html#modelages">🌿 Modelages & Corps</a>
+          <a href="prestations.html#manucure">💅 Manucure & Pieds</a>
+          <a href="prestations.html#maquillage">💋 Maquillage</a>
+          <a href="prestations.html#regard">👁️ Beauté du regard</a>
+        </div>
+      </div>
+      <a href="head-spa.html" class="nav-link">Holistic Head Spa</a>
+      <a href="enfants.html" class="nav-link">Enfants & Anniversaires</a>
+      <a href="galerie.html" class="nav-link active">Galerie</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-cta-wrap">
+      <a href="contact.html#rdv" class="btn btn-primary nav-cta" id="header-rdv-btn">🌸 Prendre rendez-vous</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="prestations.html">Prestations</a>
+  <a href="head-spa.html">Holistic Head Spa</a>
+  <a href="enfants.html">Enfants & Anniversaires</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="tarifs.html">Tarifs</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html#rdv" class="btn btn-primary mt-3">🌸 Prendre rendez-vous</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('assets/galerie-banner.jpg');"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label">Nos moments beauté</span>
+    <h1 class="page-hero-title">Galerie</h1>
+    <p class="page-hero-subtitle">Découvrez l'univers Mon Passage Beauté à Roanne</p>
+  </div>
+</div>
+
+<!-- GALERIE PRINCIPALE -->
+<section class="section" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label reveal">Photos réelles</span>
+      <h2 class="section-title reveal delay-1">L'Institut</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="section-subtitle reveal delay-3">Notre univers, nos soins, notre ambiance — d'autres photos arrivent prochainement !</p>
+    </div>
+
+    <div class="galerie-grid-full reveal">
+      <!-- Photo extérieure de l'institut -->
+      <div class="galerie-item-full gi-large" data-src="assets/facade.jpg" data-alt="Extérieur de l'institut Mon Passage Beauté à Roanne">
+        <img src="assets/facade.jpg" alt="Extérieur de l'institut Mon Passage Beauté — 8 Passage Matel, 42300 Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">📍 L'Institut</div>
+      </div>
+
+      <!-- Head Spa Découverte -->
+      <div class="galerie-item-full gi-normal" data-src="assets/headspa-decouverte.jpg" data-alt="Head Spa Découverte">
+        <img src="assets/headspa-decouverte.jpg" alt="Holistic Head Spa Découverte — Mon Passage Beauté Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">✦ Head Spa Découverte</div>
+      </div>
+
+      <!-- Head Spa Évasion -->
+      <div class="galerie-item-full gi-normal" data-src="assets/headspa-evasion.jpg" data-alt="Head Spa L'Évasion">
+        <img src="assets/headspa-evasion.jpg" alt="Holistic Head Spa L'Évasion — Mon Passage Beauté Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">✦ Head Spa L'Évasion</div>
+      </div>
+
+      <!-- Head Spa Absolue -->
+      <div class="galerie-item-full gi-normal" data-src="assets/headspa-absolue.jpg" data-alt="Head Spa L'Évasion Absolue">
+        <img src="assets/headspa-absolue.jpg" alt="Holistic Head Spa L'Évasion Absolue — Mon Passage Beauté Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">✦ Head Spa L'Évasion Absolue</div>
+      </div>
+
+      <!-- Head Spa Enfants -->
+      <div class="galerie-item-full gi-normal" data-src="assets/headspa-enfants.jpg" data-alt="Head Spa Enfants 6-15 ans">
+        <img src="assets/headspa-enfants.jpg" alt="Holistic Head Spa Enfants 6-15 ans — Mon Passage Beauté Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">✦ Head Spa Enfants</div>
+      </div>
+
+      <!-- Soins Enfants (flyer) -->
+      <div class="galerie-item-full gi-normal" data-src="assets/tarif-enfants.jpg" data-alt="Soins Enfants et Anniversaires Mon Passage Beauté">
+        <img src="assets/tarif-enfants.jpg" alt="Soins Enfants et Anniversaires — Mon Passage Beauté Roanne">
+        <div class="gal-overlay">🔍</div>
+        <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.75rem;">🌸 Soins Enfants</div>
+      </div>
+
+      <!-- Placeholders pour futures photos -->
+      <div class="gal-placeholder">
+        <div class="gal-placeholder-icon">🏠</div>
+        <div class="gal-placeholder-text">Photos de l'intérieur<br>de l'institut<br><em>À venir</em></div>
+      </div>
+
+      <div class="gal-placeholder">
+        <div class="gal-placeholder-icon">💆</div>
+        <div class="gal-placeholder-text">Photos des soins<br>en cabine<br><em>À venir</em></div>
+      </div>
+
+      <div class="gal-placeholder">
+        <div class="gal-placeholder-icon">🌸</div>
+        <div class="gal-placeholder-text">Photos ambiance<br>& réalisations<br><em>À venir</em></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4 reveal" style="padding: 1.5rem; background: var(--rose-light); border-radius: var(--radius-lg);">
+      <p style="font-family: var(--font-serif); color: var(--rose-deep); font-size: 1.05rem;">
+        📸 D'autres photos (intérieur de l'institut, soins, réalisations) seront ajoutées dès qu'elles seront disponibles.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram-section">
+  <div class="container">
+    <span class="section-label reveal" style="color: rgba(255,255,255,0.75);">Suivez-nous</span>
+    <h2 class="section-title reveal delay-1" style="color: var(--white); margin-bottom: 0.5rem;">@monpassagebeauté</h2>
+    <p class="section-subtitle reveal delay-2" style="color: rgba(255,255,255,0.8);">Retrouvez nos dernières créations et actualités sur Instagram</p>
+    <div class="reveal delay-3">
+      <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" id="ig-follow-btn" class="ig-handle">
+        📷 Nous suivre sur Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 class="cta-banner-title reveal">Vous avez envie d'un soin ?</h2>
+  <p class="cta-banner-text reveal delay-1">Prenez rendez-vous chez Mon Passage Beauté et vivez votre propre moment beauté.</p>
+  <div class="cta-banner-ctas reveal delay-2">
+    <a href="contact.html#rdv" class="btn btn-ghost" id="galerie-cta-rdv">🌸 Prendre rendez-vous</a>
+    <a href="prestations.html" class="btn" style="background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.35);">Voir nos prestations</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="48" height="48">
+          <span class="footer-brand-name">Mon Passage Beauté</span>
+        </div>
+        <p class="footer-brand-desc">Institut de beauté & bien-être · 8 Passage Matel, 42300 Roanne.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📘</a>
+          <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📷</a>
+          <a href="tel:0613422155" class="footer-social">📞</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Galerie</h4>
+        <ul class="footer-links">
+          <li><a href="#galerie">L'Institut</a></li>
+          <li><a href="#galerie">Holistic Head Spa</a></li>
+          <li><a href="#galerie">Soins Enfants</a></li>
+          <li><a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institut</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html#rdv">Prendre rendez-vous</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0613422155">06 13 42 21 55</a></li>
+          <li><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></li>
+          <li><span style="color: rgba(255,255,255,0.35);">8 Passage Matel, 42300 Roanne</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mon Passage Beauté — Institut · Roanne</p>
+      <p><a href="#" style="color: rgba(255,255,255,0.35);">Mentions légales</a> · <a href="#" style="color: rgba(255,255,255,0.35);">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">✕</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<button class="scroll-top" id="scroll-top">↑</button>
+<div class="floating-cta">
+  <a href="contact.html#rdv" class="btn btn-primary">🌸 Réserver</a>
+</div>
+
+<script src="js/main.js?v=2"></script>
+<script>
+  // Lightbox for galerie
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.galerie-item-full[data-src]').forEach(item => {
+    item.addEventListener('click', () => {
+      lbImg.src = item.dataset.src;
+      lbImg.alt = item.dataset.alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lbClose.addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+

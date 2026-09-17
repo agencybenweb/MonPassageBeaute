@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Réservation — Mon Passage Beauté · Roanne</title>
+  <meta name="description" content="Prenez rendez-vous chez Mon Passage Beauté à Roanne. Contactez-nous par téléphone, email ou via notre formulaire. Institut situé au 8 Passage Matel, 42300 Roanne.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, var(--rose-light), var(--cream));
+      padding: 10rem 0 5rem;
+      text-align: center;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: -3rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-card);
+      border-top: 4px solid var(--rose);
+    }
+
+    /* Formulaire */
+    .form-group { margin-bottom: 1.5rem; position: relative; }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--dark-soft);
+      margin-bottom: 0.5rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      background: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--dark);
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--rose-deep);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(201,123,138,0.15);
+    }
+    .form-control.error { border-color: #ef4444; background: #fef2f2; }
+    .form-error {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 0.4rem;
+      display: block;
+      font-weight: 600;
+    }
+    .form-success {
+      background: var(--rose-light);
+      border: 1px solid var(--rose);
+      color: var(--rose-deep);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      animation: fadeUp 0.5s ease;
+    }
+
+    /* Infos */
+    .contact-info-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    .ci-icon {
+      width: 50px; height: 50px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      color: var(--rose-deep);
+    }
+    .ci-content h3 { font-size: 1.1rem; font-family: var(--font-sans); margin-bottom: 0.5rem; color: var(--dark); }
+    .ci-content p, .ci-content a { color: var(--taupe); line-height: 1.6; }
+    .ci-content a:hover { color: var(--rose-deep); text-decoration: underline; }
+
+    /* Map */
+    .map-container {
+      width: 100%;
+      height: 400px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 4rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--cream-dark);
+    }
+    .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 2rem; }
+      .contact-hero { padding: 8rem 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header scrolled" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="52" height="52">
+      <div class="logo-text">
+        <span class="logo-name">Mon Passage Beauté</span>
+        <span class="logo-tagline">Institut · Roanne</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-dropdown">
+        <a href="prestations.html" class="nav-link">Prestations ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="prestations.html#epilation">💫 Épilation</a>
+          <a href="prestations.html#soins-visage">✨ Soins du visage</a>
+          <a href="prestations.html#modelages">🌿 Modelages & Corps</a>
+          <a href="prestations.html#manucure">💅 Manucure & Pieds</a>
+          <a href="prestations.html#maquillage">💋 Maquillage</a>
+          <a href="prestations.html#regard">👁️ Beauté du regard</a>
+        </div>
+      </div>
+      <a href="head-spa.html" class="nav-link">Holistic Head Spa</a>
+      <a href="enfants.html" class="nav-link">Enfants & Anniversaires</a>
+      <a href="galerie.html" class="nav-link">Galerie</a>
+      <a href="tarifs.html" class="nav-link">Tarifs</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+    </nav>
+    <div class="nav-cta-wrap">
+      <a href="#rdv" class="btn btn-primary nav-cta">🌸 Prendre rendez-vous</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="prestations.html">Prestations</a>
+  <a href="head-spa.html">Holistic Head Spa</a>
+  <a href="enfants.html">Enfants & Anniversaires</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="tarifs.html">Tarifs</a>
+  <div class="mobile-nav-divider"></div>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="container">
+    <span class="section-label reveal">Nous rencontrer</span>
+    <h1 class="page-hero-title reveal delay-1" style="color: var(--dark);">Contact & Réservation</h1>
+    <p class="section-subtitle reveal delay-2" style="max-width: 600px; margin: 0 auto;">Nous sommes à votre disposition pour toute demande de renseignement ou pour organiser votre prochain moment beauté.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="section pt-0 pb-5" style="background: var(--cream);" id="rdv">
+  <div class="container">
+    <div class="contact-grid">
+      
+      <!-- FORMULAIRE -->
+      <div class="contact-card reveal">
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--rose-deep); margin-bottom: 0.5rem;">Écrivez-nous</h2>
+        <p style="color: var(--taupe); font-size: 0.9rem; margin-bottom: 2rem;">Une question ? Une demande spécifique (anniversaire, mariage) ? Remplissez ce formulaire et nous vous répondrons très vite.</p>
+        
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="nom" class="form-label">Nom et Prénom *</label>
+            <input type="text" id="nom" name="nom" class="form-control" placeholder="Votre nom complet" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Adresse Email *</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="votre.email@exemple.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="telephone" class="form-label">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" class="form-control" placeholder="06 XX XX XX XX">
+          </div>
+          
+          <div class="form-group">
+            <label for="sujet" class="form-label">Sujet de votre demande</label>
+            <select id="sujet" name="sujet" class="form-control">
+              <option value="rdv">Demande de rendez-vous</option>
+              <option value="info">Demande d'information</option>
+              <option value="anniv">Organiser un anniversaire</option>
+              <option value="mariage">Prestation mariage</option>
+              <option value="autre">Autre demande</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Votre Message *</label>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1.2rem;">Envoyer ma demande</button>
+        </form>
+      </div>
+
+      <!-- COORDONNÉES -->
+      <div class="reveal delay-2">
+        <div style="background: var(--white); border-radius: var(--radius-xl); padding: 3rem; box-shadow: var(--shadow-card);">
+          <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--dark); margin-bottom: 2rem;">Nos Coordonnées</h2>
+          
+          <div class="contact-info-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-content">
+              <h3>Adresse</h3>
+              <p>Mon Passage Beauté<br>8 Passage Matel<br>42300 Roanne, France</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="ci-icon">📞</div>
+            <div class="ci-content">
+              <h3>Téléphone</h3>
+              <p><a href="tel:0613422155" style="font-size: 1.2rem; font-weight: 700; color: var(--rose-deep);">06 13 42 21 55</a></p>
+              <p style="font-size: 0.85rem;">Appel ou SMS pour prendre RDV</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="ci-icon">✉️</div>
+            <div class="ci-content">
+              <h3>Email</h3>
+              <p><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="ci-icon">⏰</div>
+            <div class="ci-content">
+              <h3>Horaires d'ouverture</h3>
+              <table class="horaires-table" style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <tr><td>Lundi</td><td class="horaire-rdv">Sur RDV uniquement</td></tr>
+                <tr><td>Mardi</td><td>9h – 19h</td></tr>
+                <tr><td>Mercredi</td><td class="horaire-closed">Fermé</td></tr>
+                <tr><td>Jeudi</td><td>9h – 19h</td></tr>
+                <tr><td>Vendredi</td><td>9h – 19h</td></tr>
+                <tr><td>Samedi</td><td>9h – 17h</td></tr>
+                <tr><td>Dimanche</td><td class="horaire-closed">Fermé</td></tr>
+              </table>
+            </div>
+          </div>
+          
+          <div class="contact-info-item" style="margin-bottom: 0;">
+            <div class="ci-icon">🌟</div>
+            <div class="ci-content">
+              <h3>Réseaux Sociaux</h3>
+              <div class="flex gap-1 mt-2">
+                <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" class="btn" style="background: #1877F2; color: white; border: none; padding: 0.6rem 1rem;">Facebook</a>
+                <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" class="btn" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; border: none; padding: 0.6rem 1rem;">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-container reveal">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2771.691888998031!2d4.072213776269931!3d46.03728397108343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4019a3b906a5b%3A0x6b5c3b123456789!2s8%20Passage%20Matel%2C%2042300%20Roanne!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Carte Google Maps Institut Mon Passage Beauté">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logo Mon Passage Beauté" width="48" height="48">
+          <span class="footer-brand-name">Mon Passage Beauté</span>
+        </div>
+        <p class="footer-brand-desc">Institut de beauté & bien-être · 8 Passage Matel, 42300 Roanne.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📘</a>
+          <a href="https://www.instagram.com/monpassagebeaute" target="_blank" rel="noopener" class="footer-social">📷</a>
+          <a href="tel:0613422155" class="footer-social">📞</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Prestations</h4>
+        <ul class="footer-links">
+          <li><a href="prestations.html#epilation">Épilation</a></li>
+          <li><a href="prestations.html#soins-visage">Soins du visage</a></li>
+          <li><a href="prestations.html#modelages">Modelages & Corps</a></li>
+          <li><a href="head-spa.html">Holistic Head Spa</a></li>
+          <li><a href="enfants.html">Soins Enfants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institut</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Toutes les prestations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0613422155">06 13 42 21 55</a></li>
+          <li><a href="mailto:Monpassagebeaute@gmail.com">Monpassagebeaute@gmail.com</a></li>
+          <li><span style="color: rgba(255,255,255,0.35);">8 Passage Matel, 42300 Roanne</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mon Passage Beauté — Institut · Roanne</p>
+      <p><a href="#" style="color: rgba(255,255,255,0.35);">Mentions légales</a> · <a href="#" style="color: rgba(255,255,255,0.35);">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top">↑</button>
+
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
+
+
+
+
+
+
